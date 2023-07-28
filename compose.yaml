@@ -1,12 +1,19 @@
+# epiphyte
+# "basic web development in a container"
+#
+# https://github.com/hozza/epiphyte
+# compose file v0.5
 services:
   epiphyte:
-    container_name: epiphyte
+    # pull the latest container image
+    image: ghcr.io/hozza/epiphyte:latest
+    # helps if you want to drop into a shell
     tty: true
-    build:
-      context: .
     ports:
+      # common http
       - 8080:80
+      # common nodejs
       - 3000:3000
     volumes:
+      # live mount your code repo (current directory) to the containers `/srv` 
       - .:/srv
-
